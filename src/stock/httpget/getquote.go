@@ -1,6 +1,7 @@
 package httpget
 
 import (
+	"encoding/csv"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -31,7 +32,9 @@ func Getquote (ticker string) Quote {
 		log.Fatal(err)
 	}
 	for _, line := range strings.Split(string(body),"\n") {
-		fmt.Printf("=> %s\n",line)
+		if line != "" {
+			new Quote(line.split(","))
+		}
 	}
 
 	p := new(Quote)
